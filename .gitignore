@@ -1,0 +1,7 @@
+node_modules/
+dist/
+uploads/
+.env
+*.log
+UI-Base-Template-main/
+UI-Base-Template-main.zip

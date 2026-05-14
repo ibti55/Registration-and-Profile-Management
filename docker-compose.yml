@@ -1,0 +1,87 @@
+# ============================================================
+# BPSC RPM - Production Docker Compose
+# ============================================================
+version: "3.9"
+
+services:
+  # PostgreSQL Database
+  db:
+    image: postgres:16-alpine
+    container_name: bpsc-rpm-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: bpsc_rpm
+      POSTGRES_USER: bpsc_admin
+      POSTGRES_PASSWORD: bpsc_secure_password_2026
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/migrations:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bpsc_admin -d bpsc_rpm"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - bpsc-network
+
+  # Backend API
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: bpsc-rpm-backend
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: bpsc_rpm
+      DB_USER: bpsc_admin
+      DB_PASSWORD: bpsc_secure_password_2026
+      DB_POOL_MIN: 2
+      DB_POOL_MAX: 10
+      JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:-production_access_secret_change_me}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-production_refresh_secret_change_me}
+      JWT_ACCESS_EXPIRY: 15m
+      JWT_REFRESH_EXPIRY: 7d
+      FRONTEND_URL: http://localhost
+      SMTP_HOST: ${SMTP_HOST:-smtp.gmail.com}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASS: ${SMTP_PASS}
+      OTP_EXPIRY_MINUTES: 5
+      OTP_MAX_ATTEMPTS: 5
+    volumes:
+      - uploads_data:/app/uploads
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "5000:5000"
+    networks:
+      - bpsc-network
+
+  # Frontend (Nginx)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: bpsc-rpm-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+    networks:
+      - bpsc-network
+
+volumes:
+  postgres_data:
+  uploads_data:
+
+networks:
+  bpsc-network:
+    driver: bridge

@@ -1,0 +1,774 @@
+Use Cases
+Use Case: Applicant Registration via Email OTP
+Use Case ID: UC-RPM-01
+Use Case Name: Applicant Registration via Email OTP
+Module / Submodule: Registration and Profile Management → Applicant Registration
+Brief Description:
+This use case describes how a new applicant creates a lifelong profile with a unique profile id using a simple onboarding process: providing a unique email, verifying it via OTP, and setting a password. The goal is to streamline initial registration while ensuring account authenticity and security.
+Actors:
+Primary Actor: Candidate / Applicant
+Preconditions:
+The candidate has a valid email not already registered.
+Email service is operational.
+Postconditions:
+A life long candidate account is created with a unique profile ID.
+Candidates can log in using email and password.
+OTP is marked as consumed or expired.
+
+
+Trigger:
+The candidate selects “Register” on the portal and initiates onboarding.
+Main Flow (Normal Scenario):
+The candidate enters a valid email address.
+System checks if the email is already registered.
+System generates a one-time OTP and sends it to the candidate’s email.
+The candidate receives the OTP and enters it into the portal.
+System verifies the OTP:
+If valid, proceed to password creation.
+If invalid, prompt the candidate to retry or request a new OTP.
+The candidate enters a password.
+System validates the password against the password rule and creates the candidate profile.
+System confirms account creation to the candidate.
+Candidates can now log in using email and password.
+
+
+Alternate Flows / Exceptions:
+Email Already Registered – System notifies candidate and suggests login or password recovery.
+OTP Expired / Invalid – Candidate is prompted to request a new OTP; multiple failures may trigger temporary lockout.
+Email Delivery Failure – System notifies candidates of delivery issues and suggests retrying later.
+Business Rules:
+Each email can be registered only once.
+OTPs expire after a configurable time.
+Account creation is confirmed only after OTP verification and password entry.
+
+
+Frequency of Use: Once per candidate during initial registration.
+Priority: High
+Assumptions:
+The candidate has access to the email provided.
+Email service is reliable.
+Special Requirements:
+OTP delivery must be fast (within a few minutes).
+System must protect against brute-force attempts on OTP entry.
+The registration interface must be mobile-responsive and accessible.
+
+
+Use Case: Update Applicant Profile
+Use Case ID: UC-RPM-02
+Use Case Name: Update Applicant Profile
+Module / Submodule: Registration and Profile Management → Applicant Registration
+Brief Description:
+This use case describes how a registered candidate updates their lifelong applicant profile through a dedicated profile page. The profile contains multiple sections, including personal information, educational details and work/experience details (the fields are listed in table). The system ensures that updates are stored securely and reflected in all applications of subsequent exam cycles. 
+Actors:
+Primary Actor: Candidate / Applicant
+Preconditions:
+Candidate has a registered and active account.
+Candidate is logged into the system.
+
+
+Postconditions:
+Candidate’s profile information is updated and saved securely.
+Updated data is reflected in all applications for future exam cycles and dashboards.
+Audit logs are generated for the updates.
+Trigger:
+Candidate navigates to the profile page and chooses to update their profile information.
+Main Flow (Normal Scenario):
+Candidate logs in and accesses their profile page.
+System displays the current profile details, divided into sections:
+Personal Information
+Educational Details
+Work / Experience Detail
+Field Label
+Field Type
+Notes
+Personal Information
+Applicant's Name
+Text Box (Pre-filled/Input)
+
+
+Father's Name
+Text Box (Input)
+
+
+Date of Birth
+Dropdown (Day, Month, Year)
+
+
+Mother's Name
+Text Box (Input)
+
+
+Gender
+Radio Button (Multiple Choice)
+
+
+Employment Status
+Dropdown (or Text Input/Display)
+
+
+Quota
+Dropdown
+
+
+Marital Status
+Radio Button (Single Choice)
+
+
+Nationality
+Dropdown (Display/Selection)
+
+
+National ID
+Radio Button (Yes/No)
+If 'Yes', a Text Box for the NID Number appears for input.
+Birth Registration
+Radio Button (Yes/No)
+If 'Yes', a Text Box for the Birth Registration Number appears for input.
+Passport
+Radio Button (Yes/No)
+If 'Yes', a Text Box for the Passport Number appears for input.
+Height [cm]
+Text Input
+
+
+Weight [kg]
+Text Input
+
+
+Chest [cm]
+Text Input
+
+
+
+
+
+
+
+
+Present Address
+
+
+
+
+Care of [optional]
+Text Input
+Optional field.
+Village/Town/Road/House/Flat
+Text Input
+
+
+District
+Dropdown (Select One)
+
+
+Upazilla/P.S
+Dropdown (Select One)
+
+
+Post Office
+Text Input
+
+
+Post Code [optional]
+Text Input
+Optional field.
+
+
+
+
+
+
+Permanent Address
+
+
+
+
+Care of [optional]
+Text Input
+Optional field.
+Village/Town/Road/House/Flat
+Text Input
+
+
+Home District
+Dropdown (Select One)
+
+
+Upazilla/P.S
+Dropdown (Select One)
+
+
+Post Office
+Text Input
+
+
+Post Code [optional]
+Text Input
+Optional field.
+
+
+
+
+
+
+Contact
+
+
+
+
+Contact Mobile
+Text Input
+
+
+Re-Type Mobile
+Text Input
+Confirmation field.
+Educational Qualifications
+SSC or Equivalent
+
+
+
+
+Examination
+Dropdown (Select One)
+
+
+Board
+Dropdown (Select One)
+
+
+Roll
+Text Input
+
+
+Result
+Dropdown (Select One)
+
+
+Group
+Dropdown (Select One)
+
+
+Passing Year
+Dropdown (Select One)
+
+
+
+
+
+
+
+
+HSC or Equivalent
+
+
+
+
+Examination
+Dropdown (Select One)
+
+
+Board
+Dropdown (Select One)
+
+
+Roll
+Text Input
+
+
+Result
+Dropdown (Select One)
+
+
+Group
+Dropdown (Select One)
+
+
+Passing Year
+Dropdown (Select One)
+
+
+
+
+
+
+
+
+Graduation
+
+
+
+
+Examination
+Dropdown (e.g., Honours)
+
+
+Result
+Dropdown + Text Input
+
+
+Subject/Degree
+Dropdown
+
+
+Passing Year
+Dropdown
+
+
+University/Institute
+Dropdown
+
+
+Course Duration
+Dropdown
+
+
+Student ID**
+Text Input
+Optional
+Roll No**
+Text Input
+Optional
+Session**
+Text Input
+Optional
+
+
+
+
+
+
+Master's (if applicable)
+
+
+
+
+Checkbox
+Checkbox
+
+
+Examination
+Dropdown (Select One)
+
+
+Result
+Dropdown (Select One)
+
+
+Subject
+Dropdown (Select One)
+
+
+Passing Year
+Dropdown (Select One)
+
+
+University/Institute
+Dropdown (Select One)
+
+
+Course Duration
+Dropdown (Select One)
+
+
+
+
+
+
+
+
+Other Higher Qualifications (e.g., PhD)
+
+
+Qualification Type
+Dropdown / Text Input
+e.g., PhD, Post-Doc, M.Phil.
+Examination
+Dropdown / Text Input
+
+
+Result
+Dropdown / Text Input
+
+
+Subject/Discipline
+Dropdown / Text Input
+
+
+Passing Year
+Dropdown
+
+
+University/Institute
+Dropdown / Text Input
+
+
+Add More Button
+Button
+Allows user to add multiple entries.
+
+
+Candidate updates information in one or more sections.
+If candidate provides NID, then it is validated against the NID database. 
+If candidate provides SSC/HSC result, it is validated against the Board result database. 
+Candidate submits the updated profile.
+System validates the data.
+System saves the changes and updates the candidate’s profile.
+System confirms the successful update to the candidate.
+Alternate Flows / Exceptions:
+Mandatory Fields Missing – System highlights missing fields and prevents submission until completed.
+System Error – If saving fails, system notifies the candidate and retains the previous version of the profile.
+Business Rules:
+Certain fields (e.g., email, name, DOB) cannot be changed.
+Updates are timestamped and logged for audit purposes.
+Only authorized candidates can update their own profiles.
+API calls can not be hardcoded, the api key has to be placed in a dotenv file.
+Frequency of Use: Multiple times over the lifetime of the applicant’s profile.
+Priority: High
+Assumptions:
+Candidate has internet access and authorized login credentials.
+System storage and database are operational.
+Special Requirements:
+Profile pages must be mobile-responsive and accessible.
+Data should be saved securely with encryption.
+System should prevent concurrent update conflicts and ensure data consistency.
+
+Use Case: Submit Online Application for Published Circular
+Use Case ID: UC-RPM-03
+Use Case Name: Submit Online Application for Published Circular
+Module / Submodule: Registration and Profile Management → Online Application
+Brief Description:
+This use case details the application submission process, allowing the candidate full flexibility to save drafts and edit/resubmit the application until the deadline. A snapshot of the candidate's profile data is taken immediately upon every submission or resubmission to ensure the data used for application is locked in at the moment of the candidate's last action.
+
+Actors:
+Primary Actor: Candidate / Applicant
+
+Preconditions
+Candidate has a registered and active profile.
+Candidate is logged in.
+Circulars are published and accessible in the system.
+Postconditions
+Application is stored as a Draft or Submitted (Editable) status.
+A record of the candidate's profile data is generated/updated upon every submission/resubmission.
+The application is automatically finalized and locked when the deadline passes.
+Trigger:
+Candidate selects a published circular to apply for from the dashboard or circulars page/tab.
+Main Flow (Normal Scenario)
+Candidate logs in and navigates to their dashboard or circulars page.
+Candidate selects a circular to apply for.
+System displays the application form, pre-filled with candidate profile information.
+Based on exam type:
+BCS Exam: Candidate selects cadre type (general or professional/technical or both), specifies order of cadre preference, optionally indicates non-cadre preferences, and chooses subject for technical/professional cadre based on graduation qualification.
+Non-Cadre Exam: Candidate selects the post to apply for from options in the circular; system validates educational qualification and experience requirements.
+Departmental / Senior Scale Exam: Candidate provides current government service details, mentions previous attempts of the same exam, including subjects taken and pass status.
+
+
+Candidates upload their photo and signature. 
+Candidate resizes/crops photo/signature within the system to meet the file size/dimension constraints 
+[Draft Option] Candidate clicks the "Save Draft" button.
+System saves entered data and attachments as a draft (Status: Draft).
+[Initial Submission/Resubmission] Candidate reviews, checks the confirmation checkbox, and clicks the "Submit" or "Resubmit" button.
+System performs validation and sets the application status to 'Submitted (Editable)'.
+System generates/updates an immutable snapshot of the candidate's current profile data, linking it permanently to the application record.
+System confirms submission and informs the candidate that the application remains editable until the deadline.
+[Edit Loop] The Candidate can re-enter the submitted application before the deadline, make changes, and click "Resubmit." This action triggers a new snapshot (Step 8) replacing the previous snapshot.
+[Deadline Action] When the application deadline passes, the System automatically locks the last submitted version.
+The System updates the application status to 'Finalized'.
+System notifies the candidate of the finalization.
+Alternate Flows / Exceptions:
+A1: Invalid / Missing Mandatory Fields – System highlights missing or incorrect fields and prevents submission until corrected.
+A2: Eligibility Failure – System notifies candidate if their profile does not meet the requirements for the selected post or cadre.
+A3: Document Upload Failure – Candidate is prompted to retry uploading files in acceptable formats and sizes.
+A4: System Error – If submission fails, candidate is notified, and the data remains in draft form for retry.
+A5: Submission after Deadline – System prevents any form editing or submission attempt after the circular's deadline passes.
+Business Rules
+Application must be linked to the candidate's lifelong profile.
+All mandatory fields must be filled before submission.
+Pre-filled data cannot be removed but can be updated if outdated by updating the profile (which updates the draft).
+Eligibility checks are based on educational qualifications, experience, and government service details where applicable.
+Only one submitted application per post per circular per candidate is allowed.
+Every successful submission or resubmission creates a new immutable profile data snapshot. Changes made to the candidate's main profile after the last submission will NOT affect the profile data recorded for this specific application.
+Frequency of Use: Multiple times during the lifecycle of each published circular.
+Priority: High
+Assumptions
+Candidate has an active internet connection.
+Circulars are correctly published with post requirements and eligibility criteria.
+System storage and profile data are available and consistent.
+Special Requirements
+Application interfaces must be mobile-responsive and accessible.
+The preview page must clearly display all information including attachments.
+System must ensure data integrity and prevent concurrent submission conflicts.
+Sensitive information, including photo and signature, must be securely stored.
+
+
+Use Case: Application Payment
+Use Case ID: UC-RPM-04
+Use Case Name: Application Payment
+Module / Submodule: Registration and Profile Management → Online Application
+Brief Description:
+This use case describes how a candidate completes the required application fee payment through the integrated payment gateway. Payment can be made immediately after submission or later from the dashboard or application list. The system tracks transaction status in real time and updates the application record upon successful confirmation from the payment gateway.
+Details of payment processing are covered under the Payment Gateway Integration Submodule of the Common Service Configuration Module.
+Actors:
+Primary Actor: Candidate / Applicant
+Preconditions:
+Candidate has a submitted application that requires a fee.
+Payment gateway service is operational.
+Candidate is logged into the system.
+Postconditions:
+Payment is successfully recorded against the application.
+Application status is updated to “Payment Completed.”
+Candidate receives confirmation of payment.
+
+
+Trigger:
+Candidate chooses to pay for a submitted application either immediately after submission or from the dashboard/applications page.
+Main Flow (Normal Scenario):
+Candidate selects an unpaid application to pay.
+System retrieves payment amount and displays payment options.
+Candidate confirms and is redirected to the integrated payment gateway.
+Candidate enters payment details and authorizes the transaction.
+Payment gateway processes the transaction through UC-PGI-01 (Payment Gateway Integration).
+System receives confirmation of successful payment from the gateway.
+Application status is updated to “Payment Completed” in the system.
+Candidate receives payment confirmation and digital receipt.
+Alternate Flows / Exceptions:
+Payment Failure – If payment is declined, system notifies candidate and allows retry.
+Network / Gateway Issue – If the payment gateway is temporarily unavailable, system displays a message and candidate can retry later. 
+Duplicate Payment – System prevents multiple payments for the same application. 
+Business Rules:
+Payment must be completed for the application to be considered valid.
+Payment gateway integration must comply with secure transaction standards.
+System must maintain accurate records of all payment transactions.
+
+
+Frequency of Use: Once per application requiring a fee.
+Priority: High
+Assumptions:
+Candidate has a valid payment method supported by the gateway.
+System and gateway are available and responsive.
+Candidate is authenticated and authorized to pay for the application.
+Special Requirements:
+Payment gateway must use secure protocols (e.g., HTTPS, encryption).
+System must immediately reflect payment status after confirmation.
+Candidates should be able to view and download their payment receipts from multiple access points, including the dashboard and application history.
+Payment interface must be mobile-responsive and accessible.
+
+
+Use Case: Download Applicant Copy of Submitted Application
+Use Case ID: UC-RPM-05
+Use Case Name: Download Applicant Copy of Submitted Application
+Module / Submodule: Registration and Profile Management → Online Application
+Brief Description:
+This use case describes how a candidate downloads a personal copy of their submitted application after completing the application payment. The downloaded copy serves as a record for the candidate and can include all submitted information, attachments, photo, and signature.
+Actors:
+Primary Actor: Candidate / Applicant
+Preconditions:
+Candidate has submitted an application.
+Application payment is completed and confirmed.
+Candidate is logged into the system.
+Postconditions:
+Candidate successfully downloads a copy of the submitted application.
+System records that the applicant copy was accessed/downloaded.
+
+
+Trigger:
+Candidate chooses the option to download their submitted application from the dashboard or applications page.
+Main Flow (Normal Scenario):
+Candidate navigates to the dashboard or applications page.
+Candidate selects a paid application.
+System displays an option to download the applicant copy.
+Candidate initiates the download.
+System generates a PDF or other downloadable format containing:
+All submitted application details
+Uploaded documents, photo, and signature
+Circular and post information
+System prompts candidate to save or open the downloaded file.
+Candidate successfully obtains the applicant copy.
+Alternate Flows / Exceptions:
+Payment Not Completed – System disables download option and prompts the candidate to complete payment first.
+File Generation Error – System notifies the candidate of a temporary issue and allows retry.
+Business Rules:
+Only paid applications can have an applicant copy generated.
+Downloaded applicant copy must accurately reflect the submitted information at the time of submission.
+Candidate can download the copy multiple times if needed.
+System maintains logs of download activity for audit purposes.
+
+
+Frequency of Use: Once per application, but candidate may download multiple times for record keeping.
+Priority: High
+Assumptions:
+Candidate has an active internet connection.
+System storage and PDF/file generation service are operational.
+Candidate is authenticated and authorized to download their own application.
+Special Requirements:
+Downloaded applicant copy must be secure and tamper-proof (e.g., PDF with watermark or encryption).
+Download interface must be mobile-responsive and accessible.
+System should ensure the file includes all relevant attachments and images.
+
+Use Case: Download Admit Card
+Use Case ID: UC-RPM-06
+Use Case Name: Download Admit Card
+Module / Submodule: Registration and Profile Management → Online Application
+Brief Description:
+This use case describes how a candidate downloads their admit card for an upcoming examination. Admit cards are made available by the authority before the exam date, and only eligible applicants with confirmed payments can access and download them.
+Actors:
+Primary Actor: Candidate / Applicant
+
+
+Preconditions:
+Candidate has submitted the application and completed payment.
+Admit card download window has been opened by the authority.
+Candidate is logged into the system.
+Center assignment of the candidates is complete and stored in the database 
+Postconditions:
+Candidate successfully downloads his/her admit card.
+Admit card download activity is logged in the system for audit purposes.
+
+
+Trigger:
+Admit card release is announced, and the candidate initiates a download from the dashboard or applications page.
+Main Flow (Normal Scenario):
+Candidate logs into the system and navigates to the “Admit Card” section or applications page.
+System displays the list of applications for which admit cards are available.
+Candidate selects the relevant examination.
+System verifies eligibility and generates the admit card containing, but not limited to:
+Candidate’s name, photo, and signature
+Examination name, center, and schedule
+Registration number
+Instructions and guidelines for the examination
+Candidate downloads the admit card in printable PDF format.
+System records the download action.
+Alternate Flows / Exceptions:
+Payment Pending – System prevents download until payment is completed.
+Data Mismatch or Generation Error – System displays an error and notifies the administrator for resolution.
+Multiple Applications – Candidate must select the specific exam to download the correct admit card.
+Business Rules:
+Admit cards can only be downloaded for applications with confirmed payment.
+Admit card availability period is defined and controlled by the Authority.
+Candidate may download multiple copies of the same admit card if needed.
+
+
+Frequency of Use: Once per exam cycle, or as many times as the candidate re-downloads before the exam.
+Priority: High
+Assumptions:
+Candidate’s profile (photo, signature, details) is accurate and up to date.
+File generation and storage services are available and functional.
+
+
+Special Requirements:
+Admit card PDF must be secure, tamper-proof, and printable.
+System must prevent unauthorized access to other candidates’ admit cards.
+Admit card download interface should be mobile-friendly and accessible.
+Admit card may include embedded QR code or barcode for verification at the exam center.
+
+
+Use Case: View Application Status and Instructions
+
+Use Case ID: UC-RPM-07
+Use Case Name: View Application Status and Instructions
+Module / Submodule: Registration and Profile Management → Application Tracking
+Brief Description:
+This use case describes how a candidate can view the current status and stage of their submitted applications. The status reflects progress or eligibility across different phases of the examination process, such as preliminary, written, and viva stages. Candidates also receive relevant instructions or next-step guidance based on their current status, configured by the authority.
+Actors:
+Primary Actor: Candidate / Applicant
+Preconditions:
+Candidate has submitted one or more applications.
+The authority has updated and published application statuses and instructions.
+The candidate is logged into the system.
+Postconditions:
+Candidate successfully views the current status of each submitted application.
+Candidate can read and follow the relevant instructions for the next step of the application process.
+Trigger:
+Candidate chooses to view their application statuses from the dashboard or applications page.
+
+
+Main Flow (Normal Scenario):
+Candidate logs into the system.
+Candidate navigates to the “My Applications” section.
+System retrieves and displays all submitted applications.
+For each application, the system shows:
+Current status (e.g., Qualified for Written Exam, Not Qualified, Awaiting Viva, Final Result Published).
+Corresponding instructions or next-step guidelines configured by the authority.
+Candidate reviews the displayed information and may download or print the instructions if required.
+Alternate Flows / Exceptions:
+Data Retrieval Error: System displays an appropriate error message and prompts retry.
+Multiple Applications: Candidate can filter or search for a specific application by exam type or year.
+Business Rules:
+Status updates are made solely by authorized personnel of the authority.
+Instructions displayed must correspond to the specific application/exam stage and candidate’s eligibility.
+All changes to status or instructions must be timestamped and logged for audit purposes.
+Frequency of Use: Frequently used after each stage of the application/examination process (preliminary, written, viva etc.).
+Priority: High
+
+
+Assumptions:
+Candidate has an active internet connection.
+The system is synchronized with the latest authority updates.
+Candidate is authenticated and authorized to view their own application statuses.
+Special Requirements:
+The interface for viewing statuses and instructions must be clear, responsive, and accessible on mobile and desktop.
+Status information and instructions must be read-only and tamper-proof for candidates.
+Data access should be secure, ensuring that no candidate can view another’s application information.
+
+
+
+
+Use Case: Receive Notifications and Alerts
+Use Case ID: UC-RPM-08
+Use Case Name: Receive Notifications and Alerts
+Module / Submodule: Registration and Profile Management → Notifications
+Brief Description:
+This use case describes how a candidate receives timely notifications and alerts regarding relevant circulars, application progress, and qualification for subsequent stages. Candidates can also configure their preferences for alert types and channels, while the authority can control alert delivery methods for specific events.
+Actors:
+Primary Actor: Candidate / Applicant
+
+
+Preconditions:
+Candidate has a registered and verified account in the system.
+Candidate has provided valid contact details (email, phone number).
+System has active circulars and application stages configured.
+
+
+Postconditions:
+Candidate receives notifications and alerts through the configured channels (dashboard, email, SMS).
+Candidate’s notification preferences are saved and applied to future alerts.
+System logs all notifications and alerts for audit purposes.
+
+
+Trigger:
+Candidate is eligible for a newly published circular based on criteria defined in the circular.
+Candidate progresses to the next stage of an application (e.g., qualified for written, viva, or final result).
+Authority configures a new event or notification to be sent.
+
+
+
+Main Flow (Normal Scenario):
+System detects a relevant event (e.g., new circular published, candidate qualifies for next stage).
+System identifies eligible candidates based on configured criteria.
+System generates notifications and delivers them through the configured channels:
+Dashboard notifications for logged-in or next-login viewing.
+Email notifications.
+SMS notifications.
+Candidate sees the notifications in the dashboard upon login or immediately receives email/SMS alerts.
+Candidate may update notification preferences for future alerts (types of alerts, preferred channels).
+Alternate Flows / Exceptions:
+Notification Preferences Override: Authority mandates certain alert delivery methods, overriding candidate preferences.
+Invalid Contact Info: System detects invalid email or phone number and logs the failure; candidate is prompted to update contact info.
+Delivery Failure: System retries sending email/SMS and logs failures for administrative follow-up.
+Business Rules:
+Notifications are sent only to eligible candidates as per authority-configured criteria.
+Alerts regarding progression or circular eligibility must be accurate and timely.
+All notifications must be logged with timestamps and delivery channels for audit purposes.
+Frequency of Use: Automatically triggered whenever relevant events occur (new circulars, stage progression, authority notifications).
+Priority: High
+Assumptions:
+Candidate contact information is accurate and up to date.
+System has access to event triggers (exam stage updates, circular publishing).
+Notification services (email, SMS, dashboard) are operational.
+
+
+Special Requirements:
+Notifications must be secure and only visible to the intended candidate.
+Dashboard notification interface must be mobile-friendly and accessible.
+Email and SMS notifications must be formatted clearly and contain relevant details.
+System should retry failed notifications and log all events.

@@ -1,0 +1,189 @@
+Executive Summary
+The Bangladesh Public Service Commission (BPSC) plays an essential role in the smooth functioning of the Bangladesh government by managing the recruitment of civil service officials. Recently, BPSC has initiated a transformation project named “Establishment of seven regional offices of the BPSC secretariat including its strengthening project” termed “BPSC 7RP”. BPSC is aiming to modernize its examinations by implementing an Integrated Examination Information System (I-ExamIn System), which is a digital platform introducing required software solutions and hardware devices to effectively modernize all four types of examinations (Cadre, Non-Cadre, Senior Scale, and Departmental) of BPSC. In this context, BPSC planned to invite a competent and trustworthy organization for the necessary development tasks to automate the operations of the BPSC.
+The day-to-day operations of BPSC include the publication of exam circulars, collecting applications, preparing exam questions, exam-day operations involving exam hall management, seat plans, question delivery, etc., and finally, processing and publishing exam results. A set of software components is proposed for conducting these tasks. Developing and integrating all these modules is a complex task on its own. Moreover, the functions performed by Question management and Result Processing modules are highly confidential and sensitive in nature.
+As a result, BPSC has requested that the Department of CSE, BUET, one of the leading trusted entities with expertise in automation and software development in Bangladesh, develop and deploy the modules effectively as a consultation service. A team of expert representatives from the Department of CSE is, thus, formed to complete the development of the necessary modules.  
+The team of experts from CSE, BUET conducted a series of meetings with the domain experts and IT personnel from the BPSC. The meetings were conducted in two different modes - combined meetings discussing different features of the overall system, and focused meetings discussing features of selected modules. These software specifications are an outcome of the meetings getting blended with technical interpretations by the experts from CSE, BUET having been verified by the IT personnel from the BPSC. A debriefing meeting was conducted on September 18, 2025 to present this report to the IT personnel from the BPSC before submission of this report. Minor feedback obtained in the debriefing meeting were addressed accordingly.
+This report contains Software Requirements Specification (SRS), H/W Specifications, ER Diagrams, and API Specifications of all the modules in the project. Here, the Software Requirements Specification covers requirements related to the software modules. The H/W Specifications are presented in the form of expected hardware resource requirements for all the modules. Besides, module-wise ER Diagrams are presented. Nonetheless, necessary interface requirements are presented for the purpose of delineating the API Specifications.
+In this Software Requirement Specification, brief overviews of the modules are presented. The overviews have been developed by the Department of CSE, BUET through consultations with domain experts in the BPSC. The overviews include, but not limited to, different important aspects such as objectives, potential scope, stakeholders, potential functional requirements, solutions, etc. In case of having different alternative solutions for a single case, this SRS presents recommended solutions. In case the BPSC would have any different decisions in this regard, a reconciliation meeting and informed notification in writing about the different decisions is earnestly requested to be arranged.
+
+
+
+Background and Contexts
+The Department of CSE, BUET will implement the modules planned in this project in collaboration with the BPSC. CSE, BUET has started analyzing the requirements of each module in road to designing and developing the modules. The analysis is done focusing the following objectives.
+Analyze the requirements of each of the software modules. Identify necessary functionalities and hardware requirements.
+Design the software system architecture and implementation specifications.
+Develop the system following software development principles.
+Conduct a wide range of tests on the software components, such as unit testing, integration testing, A/B testing, etc., to analyze their functionality and efficacy.
+Effectively deploy the software modules to ensure scalability and reliability of service while minimizing downtime and optimizing performance.
+Train BPSC representatives to manage and maintain the software systems beyond the completion of the project. To facilitate a smooth handover process, preferably prepare and provide the necessary documentation, such as user manuals, configurations, integration diagrams, performance test reports, etc.
+Coordinate the development of individual modules to guarantee smooth and effective integration of the six modules. Similarly, frequently communicate with the BPSC team about progress, drawbacks, and requirements.
+The system will automate the functions and processes of all four types of examinations (BCS Cadre, Non-Cadre, Senior Scale, and Departmental Examinations) managed and operated by the BPSC. The planned components and modules are as follows:
+ Requisition and Circular Management
+Recruitment Requisition
+Recruitment Circular
+
+Registration and Profile Management
+Applicant Registration
+Online Application
+Report & Dashboard
+
+Question Management
+Question Setter & Moderator (QS&M) Management
+Question Submission and Moderation
+Question Bank Management
+
+Exam Operation Management
+Centre Management
+Invigilator Management
+Examinations Management
+Operation Management
+Viva Management
+
+Result Processing
+Preliminary Result Management
+Written Exam Result Management
+Onscreen Evaluation
+Examiner Management
+Scanning Facility
+Answer Script Distribution Management
+Marking System
+Viva Exam Result Management
+OMR Solution
+ICR Solution
+Print Manager
+IoT Gateway
+
+Common Service Configuration
+Communication Module
+Document Management
+Table of Authority
+Single Sign On
+Meeting & Committee Management
+Enterprise Service Bus
+Payment Gateway Integration
+
+
+
+Registration and Profile Management
+Introduction
+The Bangladesh Public Service Commission (BPSC) administers four categories of examinations: BCS cadre, non-cadre, departmental, and senior scale. Among these, the BCS examination is one of the most competitive in the country, attracting hundreds of thousands of applicants who compete for a limited number of positions. Consequently, many candidates sit for the examination multiple times. Furthermore, an individual may participate in different categories of BPSC examinations over the course of their career—for example, first appearing in cadre and non-cadre examinations, and later, upon gaining employment and experience, sitting for senior scale examinations. 
+
+At present, each application is processed as an independent submission, even when made by the same individual across multiple examination cycles. Applicants are required to complete the full registration and application process for every attempt, and the system may not account for or leverage the continuity of an applicant’s examination history.
+
+The Registration and Profile Management Module will be designed to address these limitations by introducing a unified, lifelong applicant profile. Through a one-time registration, each candidate will maintain a permanent profile that serves as the basis for all subsequent applications. Beyond simplifying registration, the module will also support dashboards, notifications, and reporting features, allowing applicants to track their examination history and upcoming opportunities, while enabling BPSC administrators to monitor applications and deadlines more effectively. This approach will ensure comprehensive management of the applicant life cycle, streamline processes for candidates, and improve administrative efficiency for BPSC.
+Current System at A Glance
+Currently BPSC candidate’s registration is managed through the primary BPSC (Bangladesh Public Service Commission) registration portal (http://bpsc.teletalk.com.bd), where applicants can apply for the BCS cadre, non cadre and senior scale examinations and find information about deadlines and forms. For departmental examinations, applicants can use the e-Registration System at (http://dept.bpsc.gov.bd) as shown below (Figure 1).
+
+Figure 1: Existing e-Registration System
+
+Objectives
+This module aims to create a centralized, lifelong applicant profile system to streamline the registration and application process for all PSC examinations. It will facilitate efficient applicant registration, application management, and reporting via an integrated dashboard, while ensuring data validation, operational efficiency, and user convenience for exam-related activities.
+Key goals include:
+Establishing a unique, lifelong profile for each candidate.
+Facilitating online application submission with integrated validation (SSC, HSC, NID) and payment systems.
+Offering dashboards and reports for both applicants and PSC administrators.
+Improving accuracy and efficiency for applicants and administrators alike.
+Ensuring security and privacy through robust data protection measures, compliance with regulations, and secure login methods.
+Delivering a mobile-responsive platform that works effectively on a range of devices.
+Designing the platform with accessibility in mind, accommodating users with disabilities.
+Ensuring scalability to handle a high volume of users and applications without performance degradation.
+Potential Scope of Work
+a)  	Applicant Registration
+Development of a centralized registration system where each applicant registers once for life.
+Data validation through integration with the education board database (for SSC and HSC results) and NID database. 
+Generation of a unique tracking number for each profile.
+Rules for archiving profiles (e.g. Applicants cross age limit).
+Allow updates to applicant profiles to reflect changes in personal or professional information.
+Profile continuity for promotions and senior scale exams (no duplicate registrations).
+
+b)  	Online Application
+Online job circular notifications on applicant dashboards, with optional SMS alerts for eligible candidates.
+Ability to apply directly through the profile for published circulars.
+Editable fields during the application process to allow updates (where permitted).
+Integration with payment gateway after final submission.
+Storage and access to all past applications.
+Configurable application forms to capture only exam-specific information and supporting documents (e.g., experience certificate), leveraging data already stored in the applicant profile.
+Open and close application window based on published circular. 
+Configurable policies to define exam-specific eligibility criteria.
+Suspension of applicants as decided by the authority.
+c)   	Report & Dashboard
+Applicant dashboard showing:
+Current and previous applications.
+Upcoming exam dates.
+Notifications on new opportunities.
+Track the status of all applications (e.g., "Application Received," "Selected for Interview", “Conditionally Accepted”, “Cancelled”).
+PSC administrator dashboard showing:
+Reports of applicant data.
+Urgent tasks and deadlines for exam-related processes.
+Tracking of applications, submissions, and relevant statistics.
+Key Features
+Lifelong unique applicant profile with tracking ID.
+SSC and HSC education record validation via board database integration.
+Automated notifications (dashboard and SMS).
+Secure payment integration.
+Profile continuity across recruitment and promotion exams.
+Archiving mechanism for ineligible applicants (e.g., age criteria).
+Dashboards for both applicants and PSC officials.
+Previous application records accessible to candidates.
+Configurable eligibility policies for exam-specific requirements.
+Administrative Benefits
+Elimination of redundancy: One-time registration reduces repetitive applicant registrations.
+Cost efficiency: Reduces dependency on external providers
+Improved accuracy: Education board validation ensures authentic SSC and HSC records.
+Timely oversight: Dashboards and reports help PSC staff monitor key deadlines and tasks.
+Streamlined workflow: Simplifies workflow for both applicants and PSC. 
+Progress toward digital transformation: Supports a more self-reliant and modern system.
+Deliverables
+Functional applicant registration system with unique lifelong profiles.
+Integrated online application platform with payment gateway.
+Applicant dashboard (profile management, applications, notifications, exam schedules).
+PSC administrative dashboard (reports, urgent tasks, deadline tracking).
+Integration with SSC and HSC board databases for automated validation.
+Archiving system for ineligible or aged-out applicants.
+Configurable eligibility policy management for exam-specific requirements.
+User guides and help resources for both applicants and PSC administrator
+Multiple language support for registration
+
+Stakeholders
+Primary users
+1. Applicants / Candidates
+Individuals applying for BCS cadre, non-cadre, departmental, and senior scale examinations.
+Administrative stakeholders
+2. BPSC Examination Wing
+Manages the examination process and applicant data.
+3. BPSC Administration / Secretariat
+Provides policy oversight and uses reports/dashboards for decision-making.
+4. BPSC IT Division / System Administrators
+Responsible for technical maintenance. 
+External Data & Service Providers
+5. National ID Database Authority
+Provides NID verification services during registration.	
+6. Education Boards (SSC and HSC)
+Provide verification of academic credentials.
+7. Payment Gateway Providers
+Enable secure payment transactions for application fees.
+9. SMS Gateway Providers
+Deliver exam-related notifications to applicants.
+External Dependency
+National ID Database Authority – for NID verification.
+Education Boards (SSC, HSC) – for academic record validation.
+Payment Gateway – for application fee processing.
+SMS Gateway – for applicant notifications and alerts.
+
+Challenges
+Operational Challenges
+Education Board Data Updates
+Applicant records from SSC and HSC boards may change or be corrected after a candidate has already registered in the system. Handling such post-registration updates and ensuring that the applicant’s profile remains accurate can be a key challenge.
+Payment to SMS Service Providers
+Timely payments to SMS service providers are essential to avoid disruption of notification services. Any delay in settling bills could result in suspension of SMS delivery to applicants.
+Payment Reconciliation
+Cases may arise where applicants make payments but, due to network issues at either the system’s or the gateway’s end, the transaction is not recorded properly. Resolving such discrepancies requires coordination among three parties: the PSC system, the payment gateway, and the payment service provider.
+Overlap with PIMS
+Government employees often acquire new qualifications and experiences during their service, which may be maintained in the Personnel Information Management System (PIMS). The extent of overlap between PIMS and this module is not fully clear. If relevant data from PIMS needs to be incorporated, it is uncertain how the integration will be achieved and what data synchronization mechanisms would be required. This poses both design and operational challenges. A potential remedy here, as proposed by the IT personnel of the BPSC, is simply providing a link to the PIMS so that PIMS can be accessed as and when needed.
+Technical and Organizational Challenges
+Technology and Architecture Maintenance
+Software libraries, frameworks, and browser technologies evolve continuously. Ensuring that the system remains up-to-date, secure, and free from compatibility issues requires ongoing monitoring and upgrades.
+Manpower for Maintenance
+Long-term sustainability of the system may require dedicated technical staff for system monitoring, bug fixing, and upgrades. This may involve additional recruitment or reallocation of resources within BPSC.
+Disaster Recovery and Continuity
+Ensuring the system can recover quickly from hardware failures, data corruption, or other unexpected events is critical. A robust backup and disaster recovery plan is required to prevent data loss and minimize downtime, particularly during peak application periods. Establishing such mechanisms involves additional technical complexity and ongoing monitoring.

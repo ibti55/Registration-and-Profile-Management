@@ -1,0 +1,25 @@
+You are an expert fullstack engineer with expertise in express and react.
+
+You need to build a module for registration and profile Management. 
+
+The background of this project is described in /Users/rpm/background.txt
+
+The use cases are listed in /Users/rpm/uc.txt
+
+The UI template you need to follow: /Users/rpm/UI-Base-Template-main.zip
+
+
+Use your best judgement for Folder structure and ideally keep frontend and backend separated.
+
+Few notes:
+Database connection details must be stored in .env file.
+All API endpoints must be secured using JWT authentication.
+All API endpoints must be validated using Zod.
+For frontend, use tailwind + shadcnui
+For database, use a sepearate folder named "database".
+Generate a docker-compose.yml file for the entire system.
+Generate a dev docker-compose file for ease of development.
+For frontend, use react-hook-form + tanstack query + zod
+For database, use postgresql.
+Frontend should support multiple language and the frontend texts should be easily configurable.
+For backend, use nodejs + express + jwt + zod and use raw sql, don't use any orm. It should use connection pooling, prepared statements to prevent sql injection.
